@@ -1,0 +1,7 @@
+{
+  "name": "Book_Manager",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
