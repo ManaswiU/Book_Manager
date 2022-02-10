@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "Book_Manager",
+	"webDir": "build",
+	"bundledWebRuntime": false
+}

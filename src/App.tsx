@@ -2,6 +2,8 @@ import { Redirect, Route } from 'react-router-dom';
 import { IonApp, IonRouterOutlet, setupIonicReact } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import Home from './pages/Home';
+import Menu from './components/Menu';
+import { IonSplitPane } from '@ionic/react';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -22,21 +24,36 @@ import '@ionic/react/css/display.css';
 /* Theme variables */
 import './theme/variables.css';
 
+import Books from './components/Books';
+import {AddBook} from './components/AddBook';
+
 setupIonicReact();
 
-const App: React.FC = () => (
-  <IonApp>
-    <IonReactRouter>
-      <IonRouterOutlet>
-        <Route exact path="/home">
-          <Home />
-        </Route>
-        <Route exact path="/">
-          <Redirect to="/home" />
-        </Route>
-      </IonRouterOutlet>
-    </IonReactRouter>
-  </IonApp>
-);
+const App: React.FC = () => {
+  return (
+    <IonApp>
+      <IonReactRouter>
+        <IonSplitPane contentId="main">
+          <Menu />
+          <IonRouterOutlet id="main">
+         
+          <Route path="/Books" exact={true}>
+            <Books />
+          </Route>
+          <Route path="/AddBook" exact={true}>
+            <AddBook />
+          </Route>
+          <Route path="/EditBook/:recordId" exact={true}>
+            <AddBook />
+          </Route>
+
+         
+          </IonRouterOutlet>
+        </IonSplitPane>
+      </IonReactRouter>
+    </IonApp>
+  );
+};
 
 export default App;
+
